@@ -27,31 +27,31 @@ def parse_pages_input(pages_input, max_page_num):
             if '-' in part:
                 start, end = map(int, part.split('-'))
                 if start > max_page_num or end > max_page_num:
-                    st.error(f"Page number out of range. Please enter a page number between 1 and {max_page_num}.")
+                    st.error(f"Numéro de page hors limite. Veuillez entrer un numéro de page entre 1 et {max_page_num}.")
                     return []
                 pages.extend(range(start, min(end, max_page_num) + 1))
             else:
                 page = int(part)
                 if page > max_page_num or page < 1:
-                    st.error(f"Page number out of range. Please enter a page number between 1 and {max_page_num}.")
+                    st.error(f"Numéro de page hors limite. Veuillez entrer un numéro de page entre 1 et {max_page_num}.")
                     return []
                 pages.append(page)
         return list(set(pages))
     except ValueError:
-        st.error("Please enter valid page numbers or ranges.")
+        st.error("Veuillez entrer des numéros de pages ou des plages valides.")
         return []
 
 
 def main():
     st.title("PDF to PNG Converter by Visioscreen")
 
-    uploaded_pdf = st.file_uploader("Upload a PDF file", type="pdf")
+    uploaded_pdf = st.file_uploader("Importez un fichier PDF", type="pdf")
 
     if uploaded_pdf is not None:
         # Read the PDF to determine the number of pages
         reader = PyPDF2.PdfReader(uploaded_pdf)
         max_page_num = len(reader.pages)
-        pages_input = st.text_input(f"Enter the page numbers to process (e.g., 1,3,5 or 2-4). Max page: {max_page_num}",
+        pages_input = st.text_input(f"Entrez les numéros de page à traiter (par exemple, 1,3,5 ou 2-4). Page max : {max_page_num}",
                                     value="1")
         selected_pages = parse_pages_input(pages_input, max_page_num)
 
@@ -59,10 +59,10 @@ def main():
             # Stop further execution if there's an error in page selection
             return
 
-        desired_width = st.number_input("Enter desired width in pixels", value=600, step=100)
-        desired_height = st.number_input("Enter desired height in pixels", value=800, step=100)
+        desired_width = st.number_input("Entrez la largeur souhaitée en pixels", value=600, step=100)
+        desired_height = st.number_input("Entrez la hauteur souhaitée en pixels", value=800, step=100)
 
-        if st.button("Process Selected Pages"):
+        if st.button("Traiter les pages sélectionnées"):
             uploaded_pdf.seek(0)  # Reset file pointer to the beginning of the file
             # Adjusting the convert_from_bytes function call
             images = convert_from_bytes(uploaded_pdf.read(), first_page=min(selected_pages),
@@ -76,16 +76,16 @@ def main():
 
                     # Resize the image to the desired dimensions
                     resized_img = original_img.resize((desired_width, desired_height))
-                    st.image(resized_img, caption=f"Resized PDF Page {page_number} as Image")
+                    st.image(resized_img, caption=f"Page PDF redimensionnée {page_number} en tant qu'image")
 
                     # Divide the resized image into four parts
                     parts = divide_image(resized_img)
 
                     # Display and offer download links for each part
                     for j, part in enumerate(parts, start=1):
-                        st.image(part, caption=f"Part {j} of Page {page_number}")
+                        st.image(part, caption=f"Partie {j} de la Page {page_number}")
                         get_image_download_link(part, f"page_{page_number}_part_{j}",
-                                                f"Download Part {j} of Page {page_number}")
+                                                f"Télécharger Partie {j} de la Page {page_number}")
 
 
 if __name__ == "__main__":
