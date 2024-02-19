@@ -4,5 +4,4 @@ pandas
 pydeck
 streamlit
 PyPDF2
-io
 pdf2image
