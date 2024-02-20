@@ -43,9 +43,9 @@ def parse_pages_input(pages_input, max_page_num):
 
 
 def main():
-    st.title("PDF to PNG Converter by Visioscreen ")
+    st.title("PDF to PNG Converter by Visioscreen")
 
-    uploaded_pdf = st.file_uploader("Importez un fichier PDF", type="pdf")
+    uploaded_pdf = st.file_uploader("Importez un fichier PDF:", type="pdf")
 
     if uploaded_pdf is not None:
         # Read the PDF to determine the number of pages
