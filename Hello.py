@@ -91,7 +91,7 @@ def main():
 if __name__ == "__main__":
     st.markdown("""
                 <style>
-                .st-emotion-cache-czk5ss e16jpq800 {visibility: hidden;}
+                .st-emotion-cache-zq5wmm ezrtsby0 {visibility: hidden;}
                 .stActionButton {visibility: hidden;}
                 /* Hide the Streamlit footer */
                 .reportview-container .main footer {visibility: hidden;}
