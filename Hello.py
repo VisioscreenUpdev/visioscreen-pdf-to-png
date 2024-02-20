@@ -90,12 +90,13 @@ def main():
 
 if __name__ == "__main__":
     st.markdown("""
-            <style>
-            .stActionButton {visibility: hidden;}
-            /* Hide the Streamlit footer */
-            .reportview-container .main footer {visibility: hidden;}
-            /* Additionally, hide Streamlit's hamburger menu - optional */
-            .sidebar .sidebar-content {visibility: hidden;}
-            </style>
-            """, unsafe_allow_html=True)
+                <style>
+                .st-emotion-cache-czk5ss e16jpq800 {visibility: hidden;}
+                .stActionButton {visibility: hidden;}
+                /* Hide the Streamlit footer */
+                .reportview-container .main footer {visibility: hidden;}
+                /* Additionally, hide Streamlit's hamburger menu - optional */
+                .sidebar .sidebar-content {visibility: hidden;}
+                </style>
+                """, unsafe_allow_html=True)
     main()
