@@ -43,17 +43,9 @@ def parse_pages_input(pages_input, max_page_num):
 
 
 def main():
-    st.markdown("""
-        <style>
-        /* Hide the Streamlit footer */
-        .reportview-container .main footer {visibility: hidden;}
-        /* Additionally, hide Streamlit's hamburger menu - optional */
-        .sidebar .sidebar-content {visibility: hidden;}
-        </style>
-        """, unsafe_allow_html=True)
     st.title("PDF to PNG Converter by Visioscreen")
 
-    uploaded_pdf = st.file_uploader("Importez un fichier PDF:", type="pdf")
+    uploaded_pdf = st.file_uploader("Importez un fichier PDF", type="pdf")
 
     if uploaded_pdf is not None:
         # Read the PDF to determine the number of pages
@@ -97,5 +89,4 @@ def main():
 
 
 if __name__ == "__main__":
-
     main()
