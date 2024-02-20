@@ -152,7 +152,8 @@ def parse_pages_input(pages_input, max_page_num):
 
 
 def main():
-    st.title("Convertisseur PDF en PNG avec sélection de page et redimensionnement")
+    st.title("Convertisseur PDF en PNG et redimensionnement")
+    st.subheader("By Visioscreen")
 
     uploaded_pdf = st.file_uploader("Téléchargez un fichier PDF", type="pdf")
 
