@@ -89,4 +89,12 @@ def main():
 
 
 if __name__ == "__main__":
+    st.markdown("""
+        <style>
+        /* Hide the Streamlit footer */
+        .reportview-container .main footer {visibility: hidden;}
+        /* Additionally, hide Streamlit's hamburger menu - optional */
+        .sidebar .sidebar-content {visibility: hidden;}
+        </style>
+        """, unsafe_allow_html=True)
     main()
